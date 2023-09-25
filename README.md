@@ -7,14 +7,14 @@ you can first observe the aassociated apprenticeships as :
 #
 ```sh
 SET @ids = '7,6,2';
-SELECT * FROM academyhq_test.apprenticeships WHERE FIND_IN_SET(employer_id, @ids);
+SELECT * FROM apprenticeships WHERE FIND_IN_SET(employer_id, @ids);
 ```
 
 ## Delete Apprenticeships
 
 ```sh
 SET @ids = '7,6,2';
-DELETE FROM academyhq_test.apprenticeships WHERE FIND_IN_SET(employer_id, @ids);
+DELETE FROM apprenticeships WHERE FIND_IN_SET(employer_id, @ids);
 ```
 #
 #
@@ -27,14 +27,14 @@ you can first observe the aassociated occupations as :
 
 ```sh
 SET @ids = '7,6,2';
-SELECT * FROM academyhq_test.occupations WHERE FIND_IN_SET(organisation_id, @ids);
+SELECT * FROM occupations WHERE FIND_IN_SET(organisation_id, @ids);
 ```
 
 ## Delete Occupations
 
 ```sh
 SET @ids = '7,6,2';
-DELETE FROM academyhq_test.occupations WHERE FIND_IN_SET(organisation_id, @ids);
+DELETE FROM occupations WHERE FIND_IN_SET(organisation_id, @ids);
 ```
 #
 #
@@ -47,20 +47,20 @@ you can first observe the aassociated users as :
 
 ```sh
 SET @ids = '7,6,2';
-SELECT *  FROM academyhq_test.users where users.id in (select user_id from academyhq_test.members WHERE FIND_IN_SET(organisation_id, @ids));
+SELECT * FROM users where users.id in (select user_id from members WHERE FIND_IN_SET(organisation_id, @ids));
 ```
 ## See Associated User and Member Details 
 
 ```sh
 SET @ids = '7,6,2';
-SELECT members.first_name, members.last_name, members.organisation_id, users.id as uid from users inner join members on users.id=members.user_id WHERE FIND_IN_SET(organisation_id,@ids);
+SELECT members.first_name, members.last_name, members.organisation_id, users.id as uid from users inner join members on users.id=members.user_id WHERE FIND_IN_SET(organisation_id,@ids));
 ```
 
 ## Delete Users
 
 ```sh
 SET @ids = '7,6,2';
-DELETE FROM academyhq_test.users where users.id in (select user_id from academyhq_test.members WHERE FIND_IN_SET(organisation_id, @ids));
+DELETE FROM users where users.id in (select user_id from members WHERE FIND_IN_SET(organisation_id, @ids));
 ```
 
 #
@@ -75,7 +75,7 @@ you can first observe the aassociated enrolments as :
 
 ```sh
 SET @ids = '7,6,2';
-SELECT FROM academyhq_test.enrolments where enrolments.member_id in (select id from academyhq_test.members WHERE FIND_IN_SET(organisation_id, @ids);
+SELECT FROM enrolments where enrolments.member_id in (select id from members WHERE FIND_IN_SET(organisation_id, @ids));
 ```
 ## See Enrolment Details 
 
@@ -88,7 +88,7 @@ SELECT members.first_name, members.last_name, members.organisation_id, enrolment
 
 ```sh
 SET @ids = '7,6,2';
-DELETE FROM academyhq_test.enrolments where enrolments.member_id in (select id from academyhq_test.members WHERE FIND_IN_SET(organisation_id, @ids);
+DELETE FROM enrolments where enrolments.member_id in (select id from members WHERE FIND_IN_SET(organisation_id, @ids));
 ```
 
 #
@@ -102,14 +102,14 @@ you can first observe the aassociated members as :
 
 ```sh
 SET @ids = '7,6,2';
-SELECT *  FROM academyhq_test.members WHERE FIND_IN_SET(organisation_id, @ids);
+SELECT *  FROM members WHERE FIND_IN_SET(organisation_id, @ids);
 ```
 
 ## Delete Members
 
 ```sh
 SET @ids = '7,6,2';
-DELETE FROM academyhq_test.members WHERE FIND_IN_SET(organisation_id, @ids);
+DELETE FROM members WHERE FIND_IN_SET(organisation_id, @ids);
 ```
 
 #
@@ -123,12 +123,12 @@ you can first observe the aassociated organisations as :
 
 ```sh
 SET @ids = '7,6,2';
-SELECT *  FROM academyhq_test.organisations WHERE FIND_IN_SET(organisation_id, @ids);
+SELECT * FROM organisations WHERE FIND_IN_SET(id, @ids);
 ```
 
 ## Delete Organisations
 
 ```sh
 SET @ids = '7,6,2';
-DELETE FROM academyhq_test.organisations WHERE FIND_IN_SET(organisation_id, @ids);
+DELETE FROM organisations WHERE FIND_IN_SET(id, @ids);
 ```
